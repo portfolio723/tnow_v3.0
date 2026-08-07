@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Play, Clock } from "lucide-react";
-import { SectionHeader, StepNav } from "@/components/StepNav";
+import { SectionHeader } from "@/components/StepNav";
 import { CAPABILITIES } from "@/lib/experience-data";
 import { useExperience } from "@/lib/experience-store";
 
@@ -157,8 +157,6 @@ function TourGrid() {
           })}
         </div>
       </div>
-
-      <StepNav current="tour" />
     </div>
   );
 }

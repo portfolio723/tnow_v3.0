@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PlayCircle, Sparkles, CalendarCheck } from "lucide-react";
 import { useEffect } from "react";
-import { SectionHeader, StepNav } from "@/components/StepNav";
+import { SectionHeader } from "@/components/StepNav";
 import { useExperience } from "@/lib/experience-store";
 
 export const Route = createFileRoute("/experience/secops/")({
@@ -91,13 +91,6 @@ function Welcome() {
           </div>
         </div>
       </div>
-
-      <StepNav
-        current="welcome"
-        nextLabel="Start Journey"
-        alignEnd
-        className="mt-4 lg:mt-2 pt-4 lg:pt-3"
-      />
     </div>
   );
 }

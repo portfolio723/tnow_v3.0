@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Timer, ShieldCheck, CreditCard, Users, Play, RotateCcw } from "lucide-react";
-import { SectionHeader, StepNav } from "@/components/StepNav";
+import { SectionHeader } from "@/components/StepNav";
 import { useExperience } from "@/lib/experience-store";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
@@ -284,8 +284,6 @@ function WhyPage() {
           </div>
         </div>
       </div>
-
-      <StepNav current="why" alignEnd className="mt-auto pt-4 lg:pt-3" />
     </div>
   );
 }

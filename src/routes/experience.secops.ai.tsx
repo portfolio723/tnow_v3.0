@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Send, BookOpen, PlayCircle } from "lucide-react";
-import { SectionHeader, StepNav } from "@/components/StepNav";
+import { SectionHeader } from "@/components/StepNav";
 import { AI_ANSWERS, AI_SUGGESTIONS } from "@/lib/experience-data";
 import { useExperience } from "@/lib/experience-store";
 
@@ -150,8 +150,6 @@ function AiPage() {
           </section>
         </div>
       </div>
-
-      <StepNav current="ai" className="mt-auto pt-4 lg:pt-3" />
     </div>
   );
 }
