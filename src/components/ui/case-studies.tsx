@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import CountUpRaw from "react-countup";
-import { ChevronLeft, ChevronRight, Building2, Landmark, Zap } from "lucide-react";
+import { ChevronLeft, ChevronRight, Building2, ShieldCheck, Landmark, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useExperience } from "@/lib/experience-store";
 
@@ -111,6 +111,30 @@ export const CASE_STUDIES = [
     ],
   },
   {
+    id: "pharma-compliance",
+    industry: "Pharma",
+    company: "Top-10 Pharmaceutical",
+    quote:
+      "Facing intense FDA and SOX scrutiny with legacy SAP GRC that couldn't resolve SoD conflicts fast enough. SecOps integrated real-time SoD simulation and mitigating controls into every request, achieving zero material audit findings two years running.",
+    name: "Dr. Elena Rostova",
+    role: "Head of IT Compliance & GRC",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    icon: ShieldCheck,
+    metrics: [
+      {
+        value: "100%",
+        label: "Audit Readiness",
+        sub: "Zero material findings for 2 consecutive years",
+      },
+      {
+        value: "40%",
+        label: "Faster Approvals",
+        sub: "Accelerated compliant access request fulfillment",
+      },
+    ],
+  },
+  {
     id: "bank-license",
     industry: "Banking",
     company: "European Retail Bank",
@@ -217,16 +241,6 @@ export default function Casestudies({ activeCategory = null }: { activeCategory?
 
   return (
     <div className="w-full flex flex-col gap-4 relative">
-      {/* Top Header Badge & Counter */}
-      <div className="flex items-center justify-between gap-4 px-1">
-        <span className="text-xs font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
-          {currentStudy.industry}
-        </span>
-        <span className="text-xs font-medium text-muted-foreground">
-          Story {currentIndex + 1} of {filteredStudies.length}
-        </span>
-      </div>
-
       {/* Main Slide Card Container with Smooth Transition */}
       <div className="relative min-h-[300px] lg:min-h-[270px] w-full">
         <AnimatePresence mode="wait" custom={direction}>
@@ -250,7 +264,7 @@ export default function Casestudies({ activeCategory = null }: { activeCategory?
               />
               <figure className="flex flex-col justify-between gap-4 text-left flex-1">
                 <blockquote className="text-left space-y-2">
-                  <p className="text-base sm:text-lg text-foreground font-medium leading-relaxed italic">
+                  <p className="text-base sm:text-lg text-foreground font-normal leading-relaxed">
                     "{currentStudy.quote}"
                   </p>
                 </blockquote>
