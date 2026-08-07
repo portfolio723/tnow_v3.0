@@ -189,43 +189,45 @@ function SecOpsLayout() {
 
       <div className="mx-auto flex w-full max-w-[1400px] gap-8 px-4 sm:px-6 py-6 md:py-8 lg:flex-1 lg:h-0 lg:overflow-hidden lg:py-5 lg:gap-6 relative z-10">
         {/* Sidebar */}
-        <aside className="hidden lg:flex w-64 shrink-0 flex-col h-full overflow-y-auto scrollbar-none pr-1 justify-start gap-3 pb-2">
-          <div className="glass-sidebar p-5 relative z-10 flex flex-col justify-start gap-1">
-            <div className="flex items-center justify-between">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-caption">
-                Your journey
-              </p>
-              <span className="inline-flex items-center gap-1 text-[10px] text-caption">
-                <Clock className="size-3" /> ~12 min
-              </span>
-            </div>
-            <p className="mt-1.5 font-display text-base font-semibold">{pct}% Complete</p>
-            <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-border">
-              <div
-                className="h-full rounded-full bg-primary transition-all"
-                style={{ width: `${pct}%` }}
-              />
+        <aside className="hidden lg:flex w-64 shrink-0 flex-col h-full overflow-hidden justify-between gap-3 pb-1">
+          <div className="glass-sidebar p-5 relative z-10 flex-1 flex flex-col justify-between gap-2 overflow-hidden">
+            <div>
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-caption">
+                  Your journey
+                </p>
+                <span className="inline-flex items-center gap-1 text-[10px] text-caption">
+                  <Clock className="size-3" /> ~12 min
+                </span>
+              </div>
+              <p className="mt-1.5 font-display text-base font-semibold">{pct}% Complete</p>
+              <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-border">
+                <div
+                  className="h-full rounded-full bg-primary transition-all"
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+
+              {/* Sidebar metadata breakdown */}
+              <div className="mt-3 pt-3 border-t border-border/50 grid grid-cols-2 gap-y-2.5 gap-x-2 text-xs font-sans">
+                <div>
+                  <p className="text-[9px] uppercase font-bold text-muted-foreground/60 tracking-wider">
+                    Estimated Time
+                  </p>
+                  <p className="text-[12px] font-medium text-foreground mt-0.5">12 minutes</p>
+                </div>
+                <div>
+                  <p className="text-[9px] uppercase font-bold text-muted-foreground/60 tracking-wider">
+                    Current Step
+                  </p>
+                  <p className="text-[12px] font-medium text-foreground mt-0.5">
+                    {currentIdx + 1} / {STEPS.length}
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Sidebar metadata breakdown */}
-            <div className="mt-3 pt-3 border-t border-border/50 grid grid-cols-2 gap-y-2.5 gap-x-2 text-xs font-sans">
-              <div>
-                <p className="text-[9px] uppercase font-bold text-muted-foreground/60 tracking-wider">
-                  Estimated Time
-                </p>
-                <p className="text-[12px] font-medium text-foreground mt-0.5">12 minutes</p>
-              </div>
-              <div>
-                <p className="text-[9px] uppercase font-bold text-muted-foreground/60 tracking-wider">
-                  Current Step
-                </p>
-                <p className="text-[12px] font-medium text-foreground mt-0.5">
-                  {currentIdx + 1} / {STEPS.length}
-                </p>
-              </div>
-            </div>
-
-            <nav className="mt-4 space-y-0.5">
+            <nav className="mt-3 space-y-1 flex-1 overflow-y-auto scrollbar-none pr-0.5">
               {STEPS.map((s, i) => {
                 const isActive = currentStep.id === s.id;
                 const isDone = pathname.includes("/success") || completed[s.id];
@@ -233,9 +235,9 @@ function SecOpsLayout() {
                   <Link
                     key={s.id}
                     to={s.path}
-                    className={`flex items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-xs transition ${
+                    className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-xs transition ${
                       isActive
-                        ? "bg-primary/10 text-primary font-medium"
+                        ? "bg-primary/10 text-primary font-semibold"
                         : "text-muted-foreground hover:bg-surface hover:text-foreground"
                     }`}
                   >
@@ -244,7 +246,7 @@ function SecOpsLayout() {
                         isDone
                           ? "bg-primary text-primary-foreground"
                           : isActive
-                            ? "border border-primary/40 bg-background text-primary"
+                            ? "border border-primary/40 bg-background text-primary font-bold"
                             : "border border-border bg-background text-caption"
                       }`}
                     >
@@ -258,12 +260,12 @@ function SecOpsLayout() {
           </div>
 
           {/* Promo CTA Card */}
-          <div className="rounded-xl bg-[#204CED] text-white p-4 shrink-0 flex flex-col justify-between relative overflow-hidden border border-[#204CED]/10 group">
+          <div className="rounded-2xl bg-[#204CED] text-white p-3.5 sm:p-4 shrink-0 flex flex-col justify-between relative overflow-hidden border border-[#204CED]/10 shadow-md group">
             <div>
               <span className="inline-block rounded-full bg-white/20 px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider text-white">
                 Exclusive Invitation
               </span>
-              <h3 className="mt-2 font-display text-[14px] font-semibold leading-tight text-white">
+              <h3 className="mt-1.5 font-display text-[13px] font-semibold leading-tight text-white">
                 Book an Interactive SAP Security Workshop
               </h3>
               <p className="mt-1 text-[10px] text-white/80 leading-normal font-normal">
@@ -272,10 +274,10 @@ function SecOpsLayout() {
               </p>
             </div>
 
-            <div className="mt-3">
+            <div className="mt-2.5">
               <Link
                 to="/experience/secops/book"
-                className="w-full py-2 rounded-lg bg-white hover:bg-white/95 text-[#204CED] font-medium text-[11px] transition duration-200 text-center block shadow-sm active:scale-98 font-sans"
+                className="w-full py-1.5 rounded-lg bg-white hover:bg-white/95 text-[#204CED] font-medium text-[11px] transition duration-200 text-center block shadow-xs active:scale-98 font-sans"
               >
                 Schedule Free Scan
               </Link>
